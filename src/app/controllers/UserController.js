@@ -1,11 +1,11 @@
-const knex = require('../database')
+const knex = require('../../database')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const authConfig = require('../config/auth.json')
+const authConfig = require('../../config/auth.json')
 
 function generateToken(params = {}){
-    return jwt.sign(params, authConfig.secret,{expiresIn: 84600})
+    return jwt.sign(params, authConfig.secret,{expiresIn: "1h"})
 }
 
 module.exports = {

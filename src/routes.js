@@ -1,7 +1,7 @@
 const express = require('express')
-const userController = require('./controllers/UserController')
-const projectController = require('./controllers/ProjectController')
-const authMiddleware = require('./middleware/auth')
+const userController = require('./app/controllers/UserController')
+const projectController = require('./app/controllers/ProjectController')
+const authMiddleware = require('./app/middleware/auth')
 
 const routes = express.Router()
 routes
@@ -12,5 +12,8 @@ routes
     
     //projects
     .get('/projects',authMiddleware, projectController.index)
+    .post('/projects',authMiddleware, projectController.create)
+    .put('/projects/:id',authMiddleware, projectController.update)
+    .delete('/projects/:id',authMiddleware, projectController.delete)
 
 module.exports = routes;
